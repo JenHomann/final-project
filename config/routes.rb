@@ -1,10 +1,11 @@
 FinalProject::Application.routes.draw do
-  get "user_sessions/new"
+  
+  root :to => 'users#index'
 
-  get "user_sessions/create"
+  resources :users, :password_resets, :user_sessions
 
-  get "user_sessions/destroy"
-
-  resources :users, :password_resets
+  # login and logout routes
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
 
 end
