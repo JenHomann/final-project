@@ -13,4 +13,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Your password has been reset")
   end
   
+  def welcome(user)
+    @user = user
+    mail(:to => user.email, :subject => "Your account has been created")
+  end
+  
 end
